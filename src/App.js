@@ -1,9 +1,14 @@
 import './App.css';
-
+import { Routes, Route } from 'react-router-dom';
+import Login from './components/pages/login/Login';
+import Register from './components/pages/register/Register';
 function App() {
   return (
     <div>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
+      <Routes>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register />}></Route>
+      </Routes>
     </div>
   );
 }
