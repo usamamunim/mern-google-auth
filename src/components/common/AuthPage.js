@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { AuthSchema } from '../../utils/yup/schemas';
 import bgImg from '../../images/bg-img2.jpeg';
+import { login, register } from '../../api/auth';
 const AuthPage = ({ type }) => {
   return (
     <div>
@@ -16,8 +17,8 @@ const AuthPage = ({ type }) => {
           password: '',
         }}
         validationSchema={AuthSchema}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={async (creds) => {
+          type === 'Register' ? await register(creds) : await login(creds);
         }}
       >
         {({ isSubmitting }) => {
